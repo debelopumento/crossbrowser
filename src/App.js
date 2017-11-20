@@ -17,6 +17,16 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <button onClick={this.clickedButton}>button</button>
+        <div
+          style={{
+            border: '1px solid gray',
+            height: 30,
+            cursor: 'pointer',
+          }}
+          onClick={this.clickedButton}
+        >
+          clickable div
+        </div>
       </div>
     )
   }
