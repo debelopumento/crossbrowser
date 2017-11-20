@@ -13,8 +13,19 @@ const counterReducer = (state = 0, action) => {
 	}
 }
 
+const usersReducer = (state = null, action) => {
+	switch (action.type) {
+		case 'UPDATE_USERS': {
+			return action.payload
+		}
+		default:
+			return state
+	}
+}
+
 const reducerCollection = {
 	counter: counterReducer,
+	users: usersReducer,
 }
 
 const allReducers = combineReducers(reducerCollection)

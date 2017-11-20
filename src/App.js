@@ -8,7 +8,14 @@ class App extends Component {
   clickedButton = () => {
     console.log('button clicked')
   }
+  componentDidMount() {
+    this.props.fetchUsers()
+  }
   render() {
+    let user
+    if (this.props.users) {
+      user = this.props.users[0].name
+    }
     return (
       <div className="App">
         <header className="App-header">
@@ -35,6 +42,7 @@ class App extends Component {
             increment counter
           </button>
         </div>
+        <div>first user: {user}</div>
       </div>
     )
   }
@@ -43,6 +51,10 @@ class App extends Component {
 export default connect(
   storeState => ({
     counter: storeState.counter,
+    users: storeState.users,
   }),
-  { incrementCounter: actions.incrementCounter }
+  {
+    incrementCounter: actions.incrementCounter,
+    fetchUsers: actions.fetchUsers,
+  }
 )(App)
