@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import * as actions from './actions'
 import logo from './logo.svg'
 import './App.css'
 
@@ -28,7 +29,12 @@ class App extends Component {
         >
           clickable div
         </div>
-        <div>counter: {this.props.counter}</div>
+        <div>
+          counter: {this.props.counter}
+          <button onClick={this.props.incrementCounter}>
+            increment counter
+          </button>
+        </div>
       </div>
     )
   }
@@ -38,5 +44,5 @@ export default connect(
   storeState => ({
     counter: storeState.counter,
   }),
-  {}
+  { incrementCounter: actions.incrementCounter }
 )(App)
