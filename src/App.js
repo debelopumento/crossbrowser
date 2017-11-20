@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import logo from './logo.svg'
 import './App.css'
 
@@ -27,9 +28,15 @@ class App extends Component {
         >
           clickable div
         </div>
+        <div>counter: {this.props.counter}</div>
       </div>
     )
   }
 }
 
-export default App
+export default connect(
+  storeState => ({
+    counter: storeState.counter,
+  }),
+  {}
+)(App)
